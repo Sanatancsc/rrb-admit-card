@@ -17,20 +17,12 @@
         .dob-container select { height: 40px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc; padding: 5px; flex: 1; }
         .captcha-box { background: #efefef; border: 1px solid #ddd; padding: 10px; border-radius: 3px; width: 240px; margin: 15px auto; text-align: center; }
         .captcha-img-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
-        .captcha-box img { font-weight: bold; font-style: italic; letter-spacing: 5px; background: #fff; padding: 5px 15px; border: 1px dashed #999; font-size: 20px; color: #003366; user-select: none; }
+        .captcha-box span { font-weight: bold; font-style: italic; letter-spacing: 5px; background: #fff; padding: 5px 15px; border: 1px dashed #999; font-size: 20px; color: #003366; user-select: none; display: inline-block; }
         .refresh-btn { cursor: pointer; color: #003442; font-size: 18px; text-decoration: none; font-weight: bold; }
         .btn-login { width: 100%; max-width: 150px; background-color: #337ab7; color: white; padding: 10px; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; display: block; margin: 20px auto 0 auto; text-align: center; }
         .btn-login:hover { background-color: #286090; color: white; text-decoration: none; }
         .error-div { color: red; font-weight: bold; text-align: center; margin-bottom: 15px; min-height: 20px; }
         .hinttext { text-align: center; color: #777; font-size: 11px; margin-top: 25px; }
-        .hidden { display: none !important; }
-        /* एडमिट कार्ड डाउनलोड कार्ड स्टाइल */
-        .success-card { background: white; padding: 30px; border-radius: 4px; text-align: center; }
-        .info-table { width: 100%; margin: 20px 0; font-size: 14px; text-align: left; border-collapse: collapse; }
-        .info-table td { padding: 10px; border-bottom: 1px solid #eee; }
-        .info-table td.lbl { font-weight: bold; color: #555; width: 45%; }
-        .btn-download { background-color: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; display: inline-block; margin-top: 15px; text-decoration: none; }
-        .btn-download:hover { background-color: #218838; color: white; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -38,7 +30,6 @@
 <section class="wrpdashboard">
     <div class="container-fluid">
         <div class="Login-container">
-            
             <div id="log" class="login_body">
                 <h2>प्रत्याशी लॉग इन/ Candidate Login</h2>
                 
@@ -61,7 +52,6 @@
                                 }
                             </script>
                         </select>
-                        
                         <select id="confData2">
                             <option value="">MM</option>
                             <script>
@@ -71,7 +61,6 @@
                                 }
                             </script>
                         </select>
-                        
                         <select id="confData3">
                             <option value="">YYYY</option>
                             <script>
@@ -86,7 +75,7 @@
 
                 <div class="captcha-box">
                     <div class="captcha-img-row">
-                        <img id="captchaImg" src="" alt="8712">
+                        <span id="captchaImg"></span>
                         <a href="javascript:void(0)" class="refresh-btn" onclick="generateCaptcha()" title="Get New Image">🔄</a>
                     </div>
                     <input type="text" id="inputBox" class="form-control" placeholder="Type numbers as shown in image" style="text-align: center; height: 35px;">
@@ -96,48 +85,11 @@
                 
                 <div class="hinttext">Version 15.02.01</div>
             </div>
-
-            <div id="downloadSection" class="login_body hidden">
-                <div class="success-card">
-                    <h2 style="color: #28a745; border-bottom: 2px solid #28a745;">परीक्षा विवरण / Exam Details</h2>
-                    <p style="color: #666; margin-bottom: 20px;">आपका लॉगिन सफल रहा। कृपया अपना एडमिट कार्ड नीचे से डाउनलोड करें:</p>
-                    
-                    <table class="info-table">
-                        <tr>
-                            <td class="lbl">उम्मीदवार का नाम (Candidate Name):</td>
-                            <td><strong>SOURABH</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="lbl">अनुक्रमांक (Roll Number):</td>
-                            <td>17425517230143</td>
-                        </tr>
-                        <tr>
-                            <td class="lbl">परीक्षा दिनांक (Exam Date):</td>
-                            <td>06/JUN/2026</td>
-                        </tr>
-                        <tr>
-                            <td class="lbl">रिपोर्टिंग समय (Reporting Time):</td>
-                            <td>11:30 AM (Shift 2)</td>
-                        </tr>
-                        <tr>
-                            <td class="lbl">परीक्षा केंद्र (Exam Centre):</td>
-                            <td>Indraprastha Public School, New Delhi</td>
-                        </tr>
-                    </table>
-
-                    <a href="admit_card.pdf" download="RRB_Admit_Card_Sourabh.pdf" class="btn-download">
-                        📥 डाउनलोड एडमिट कार्ड (E-Call Letter)
-                    </a>
-                </div>
-                <div class="hinttext">Version 15.02.01</div>
-            </div>
-
         </div>
     </div>
 </section>
 
 <script>
-    // पेज लोड होते ही रैंडम कैप्चा कोड जनरेट करना
     var currentCaptcha = "";
     function generateCaptcha() {
         currentCaptcha = Math.floor(1000 + Math.random() * 9000).toString();
@@ -146,7 +98,6 @@
     }
     window.onload = generateCaptcha;
 
-    // लॉगिन वैलिडेशन फ़ंक्शन
     function fnLogin() {
         var userId = document.getElementById("userid").value.trim();
         var dd = document.getElementById("confData1").value;
@@ -155,39 +106,24 @@
         var captchaInput = document.getElementById("inputBox").value.trim();
         var errorPlace = document.getElementById("ERROR_PLACE_DIV");
 
-        // एडमिट कार्ड का ओरिजिनल डेटा सेट
         var correctRoll = "17425517230143";
-        var correctDob = "03-04-2003"; // DD=03, MM=04, YYYY=2003
+        var correctDob = "03-04-2003";
 
-        // 1. खाली फ़ील्ड्स चेक करना
-        if (userId === '') {
-            alert("Please enter a valid Registration Number.");
-            return false;
-        }
-        if (dd === '' || mm === '' || yyyy === '') {
-            alert("Please enter a valid Password.");
-            return false;
-        }
-        if (captchaInput === '') {
-            alert("Please enter the Captcha.");
-            return false;
-        }
+        if (userId === '') { alert("Please enter a valid Registration Number."); return false; }
+        if (dd === '' || mm === '' || yyyy === '') { alert("Please enter a valid Password."); return false; }
+        if (captchaInput === '') { alert("Please enter the Captcha."); return false; }
 
-        // 2. कैप्चा वैलिडेशन
         if (captchaInput !== currentCaptcha) {
             errorPlace.innerText = "Please enter correct text shown in image";
-            generateCaptcha(); // गलत कैप्चा होने पर नया कैप्चा दें
+            generateCaptcha();
             return false;
         }
 
-        // 3. रोल नंबर और जन्मतिथि मैच करना
         var enteredDob = dd + "-" + mm + "-" + yyyy;
         if (userId === correctRoll && enteredDob === correctDob) {
-            // लॉगिन सक्सेस - लॉगिन बॉक्स छुपाएं और डाउनलोड बॉक्स दिखाएं
-            document.getElementById("log").classList.add("hidden");
-            document.getElementById("downloadSection").classList.remove("hidden");
+            // लॉगिन सही होने पर 'download.html' पेज पर भेजें
+            window.location.href = "download.html";
         } else {
-            // गलत क्रेडेंशियल पर ओरिजिनल साइट जैसा एरर दिखाना
             errorPlace.innerText = "* Incorrect Credentials.";
             generateCaptcha();
         }
