@@ -2,112 +2,197 @@
 <html lang="hi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRB Chandigarh - E-Call Letter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Applicant Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; }
-        .header { background-color: #003366; color: white; padding: 15px; text-align: center; border-bottom: 4px solid #ffcc00; }
-        .header h1 { margin: 0; font-size: 22px; }
-        .header p { margin: 5px 0 0 0; font-size: 14px; color: #ffcc00; }
-        .container { max-width: 450px; margin: 50px auto; padding: 20px; }
-        .card { background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-top: 4px solid #003366; }
-        h2 { text-align: center; color: #333; margin-top: 0; font-size: 20px; }
-        label { display: block; margin-top: 15px; color: #555; font-weight: bold; font-size: 14px; }
-        input { width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px; }
-        input:focus { border-color: #003366; outline: none; }
-        button { width: 100%; padding: 12px; background-color: #003366; color: white; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 20px; transition: 0.3s; }
-        button:hover { background-color: #002244; }
-        .error { color: #cc0000; font-size: 14px; text-align: center; margin-top: 10px; font-weight: bold; }
-        .hidden { display: none; }
-        .welcome-box { text-align: center; }
-        .info-table { width: 100%; margin: 15px 0; border-collapse: collapse; text-align: left; }
-        .info-table td { padding: 8px; border-bottom: 1px solid #eee; font-size: 15px; }
-        .info-table td.label { font-weight: bold; color: #666; width: 40%; }
-        .btn-download { background-color: #28a745; }
-        .btn-download:hover { background-color: #218838; }
-        .footer { text-align: center; margin-top: 30px; font-size: 12px; color: #777; }
+        body { background-color: rgb(93, 155, 251); font-family: Arial, sans-serif; }
+        .Login-container { max-width: 550px; margin: 40px auto; background: #fff; padding: 0px; border-radius: 4px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); overflow: hidden; }
+        .login_body { padding: 25px; }
+        .login_body h2 { font-size: 18px; color: #333; font-weight: bold; border-bottom: 2px solid #337ab7; padding-bottom: 10px; margin-bottom: 20px; text-align: center; }
+        .form-group label { font-weight: bold; color: #444; font-size: 13px; }
+        .redTxt { color: red; }
+        .mandatoryinput { background: rgb(254, 255, 211) !important; color: rgb(51, 51, 51); height: 40px; }
+        .dob-container { display: flex; gap: 10px; margin-bottom: 15px; }
+        .dob-container select { height: 40px; font-size: 14px; border-radius: 4px; border: 1px solid #ccc; padding: 5px; flex: 1; }
+        .captcha-box { background: #efefef; border: 1px solid #ddd; padding: 10px; border-radius: 3px; width: 240px; margin: 15px auto; text-align: center; }
+        .captcha-img-row { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 8px; }
+        .captcha-box img { font-weight: bold; font-style: italic; letter-spacing: 5px; background: #fff; padding: 5px 15px; border: 1px dashed #999; font-size: 20px; color: #003366; user-select: none; }
+        .refresh-btn { cursor: pointer; color: #003442; font-size: 18px; text-decoration: none; font-weight: bold; }
+        .btn-login { width: 100%; max-width: 150px; background-color: #337ab7; color: white; padding: 10px; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; display: block; margin: 20px auto 0 auto; text-align: center; }
+        .btn-login:hover { background-color: #286090; color: white; text-decoration: none; }
+        .error-div { color: red; font-weight: bold; text-align: center; margin-bottom: 15px; min-height: 20px; }
+        .hinttext { text-align: center; color: #777; font-size: 11px; margin-top: 25px; }
+        .hidden { display: none !important; }
+        /* एडमिट कार्ड डाउनलोड कार्ड स्टाइल */
+        .success-card { background: white; padding: 30px; border-radius: 4px; text-align: center; }
+        .info-table { width: 100%; margin: 20px 0; font-size: 14px; text-align: left; border-collapse: collapse; }
+        .info-table td { padding: 10px; border-bottom: 1px solid #eee; }
+        .info-table td.lbl { font-weight: bold; color: #555; width: 45%; }
+        .btn-download { background-color: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; display: inline-block; margin-top: 15px; text-decoration: none; }
+        .btn-download:hover { background-color: #218838; color: white; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <!-- सरकारी पोर्टल जैसा हेडर -->
-    <div class="header">
-        <h1>रेलवे भर्ती बोर्ड / RAILWAY RECRUITMENT BOARD</h1>
-        <p>CEN 04/2025 - SECTION CONTROLLER E-CALL LETTER</p>
-    </div>
-
-    <div class="container">
-        <!-- लॉगिन फॉर्म सेक्शन -->
-        <div id="loginSection" class="card">
-            <h2>कैंडिडेट लॉगिन (Login)</h2>
+<section class="wrpdashboard">
+    <div class="container-fluid">
+        <div class="Login-container">
             
-            <label for="rollNo">अनुक्रमांक (Roll Number):</label>
-            <input type="text" id="rollNo" placeholder="Roll Number" autocomplete="off">
-            
-            <label for="dob">जन्मतिथि (Password - DD-MM-YYYY):</label>
-            <input type="text" id="dob" placeholder="DD-MM-YYYY" autocomplete="off">
-            
-            <button onclick="validateLogin()">लॉगिन करें</button>
-            <p id="errorMessage" class="error"></p>
-        </div>
-
-        <!-- एडमिट कार्ड डाउनलोड सेक्शन -->
-        <div id="downloadSection" class="card hidden">
-            <div class="welcome-box">
-                <h2 style="color: #28a745;">(Login Successful)</h2>
-                <p>आपकी परीक्षा का विवरण नीचे दिया गया है:</p>
+            <div id="log" class="login_body">
+                <h2>प्रत्याशी लॉग इन/ Candidate Login</h2>
                 
-                <table class="info-table">
-                    <tr>
-                        <td class="label">उम्मीदवार का नाम:</td>
-                        <td><strong>SOURABH</strong></td>
-                    </tr>
-                    <tr>
-                        <td class="label">अनुक्रमांक (Roll No):</td>
-                        <td>17425517230143</td>
-                    </tr>
-                    <tr>
-                        <td class="label">परीक्षा दिनांक:</td>
-                        <td>06/JUN/2026</td>
-                    </tr>
-                    <tr>
-                        <td class="label">रिपोर्टिंग का समय:</td>
-                        <td>11:30 AM (Shift 2)</td>
-                    </tr>
-                </table>
+                <div id="ERROR_PLACE_DIV" class="error-div"></div>
 
-                <!-- यहाँ से असली PDF डाउनलोड होगी -->
-                <a href="admit_card.pdf" download="RRB_Admit_Card_Sourabh.pdf" style="text-decoration: none;">
-                    <button class="btn-download">Download E-Call Letter</button>
-                </a>
+                <div class="form-group">
+                    <label>पंजीकरण संख्या/ Registration Number <i class="redTxt">*</i></label>
+                    <input type="text" placeholder="Enter Registration Number." maxlength="15" id="userid" class="form-control mandatoryinput">
+                </div>
+                
+                <div class="form-group">
+                    <label>उपयोगकर्ता पासवर्ड/ User Password (Date of Birth) <i class="redTxt">*</i></label>
+                    <div class="dob-container">
+                        <select id="confData1">
+                            <option value="">DD</option>
+                            <script>
+                                for(let i=1; i<=31; i++) {
+                                    let val = i < 10 ? '0' + i : i;
+                                    document.write(`<option value="${val}">${val}</option>`);
+                                }
+                            </script>
+                        </select>
+                        
+                        <select id="confData2">
+                            <option value="">MM</option>
+                            <script>
+                                for(let i=1; i<=12; i++) {
+                                    let val = i < 10 ? '0' + i : i;
+                                    document.write(`<option value="${val}">${val}</option>`);
+                                }
+                            </script>
+                        </select>
+                        
+                        <select id="confData3">
+                            <option value="">YYYY</option>
+                            <script>
+                                for(let i=2026; i>=1950; i--) {
+                                    document.write(`<option value="${i}">${i}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    <label style="font-weight: normal; color: #666;">(Eg. 26 / 01 / 1990)</label>
+                </div>
+
+                <div class="captcha-box">
+                    <div class="captcha-img-row">
+                        <img id="captchaImg" src="" alt="8712">
+                        <a href="javascript:void(0)" class="refresh-btn" onclick="generateCaptcha()" title="Get New Image">🔄</a>
+                    </div>
+                    <input type="text" id="inputBox" class="form-control" placeholder="Type numbers as shown in image" style="text-align: center; height: 35px;">
+                </div>
+
+                <a href="javascript:void(0)" onclick="fnLogin()" class="btn-login">लॉग इन करें/ Login</a>
+                
+                <div class="hinttext">Version 15.02.01</div>
             </div>
-        </div>
-        
-        <div class="footer">
-            © 2026 Railway Recruitment Board. All Rights Reserved.
+
+            <div id="downloadSection" class="login_body hidden">
+                <div class="success-card">
+                    <h2 style="color: #28a745; border-bottom: 2px solid #28a745;">परीक्षा विवरण / Exam Details</h2>
+                    <p style="color: #666; margin-bottom: 20px;">आपका लॉगिन सफल रहा। कृपया अपना एडमिट कार्ड नीचे से डाउनलोड करें:</p>
+                    
+                    <table class="info-table">
+                        <tr>
+                            <td class="lbl">उम्मीदवार का नाम (Candidate Name):</td>
+                            <td><strong>SOURABH</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">अनुक्रमांक (Roll Number):</td>
+                            <td>17425517230143</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">परीक्षा दिनांक (Exam Date):</td>
+                            <td>06/JUN/2026</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">रिपोर्टिंग समय (Reporting Time):</td>
+                            <td>11:30 AM (Shift 2)</td>
+                        </tr>
+                        <tr>
+                            <td class="lbl">परीक्षा केंद्र (Exam Centre):</td>
+                            <td>Indraprastha Public School, New Delhi</td>
+                        </tr>
+                    </table>
+
+                    <a href="admit_card.pdf" download="RRB_Admit_Card_Sourabh.pdf" class="btn-download">
+                        📥 डाउनलोड एडमिट कार्ड (E-Call Letter)
+                    </a>
+                </div>
+                <div class="hinttext">Version 15.02.01</div>
+            </div>
+
         </div>
     </div>
+</section>
 
-    <script>
-        function validateLogin() {
-            var userRoll = document.getElementById("rollNo").value.trim();
-            var userDob = document.getElementById("dob").value.trim();
-            var errorBox = document.getElementById("errorMessage");
+<script>
+    // पेज लोड होते ही रैंडम कैप्चा कोड जनरेट करना
+    var currentCaptcha = "";
+    function generateCaptcha() {
+        currentCaptcha = Math.floor(1000 + Math.random() * 9000).toString();
+        document.getElementById("captchaImg").innerText = currentCaptcha;
+        document.getElementById("inputBox").value = "";
+    }
+    window.onload = generateCaptcha;
 
-            // एडमिट कार्ड के हिसाब से फिक्स डेटा
-            var correctRoll = "17425517230143";
-            var correctDob = "03-04-2003";
+    // लॉगिन वैलिडेशन फ़ंक्शन
+    function fnLogin() {
+        var userId = document.getElementById("userid").value.trim();
+        var dd = document.getElementById("confData1").value;
+        var mm = document.getElementById("confData2").value;
+        var yyyy = document.getElementById("confData3").value;
+        var captchaInput = document.getElementById("inputBox").value.trim();
+        var errorPlace = document.getElementById("ERROR_PLACE_DIV");
 
-            if (userRoll === correctRoll && userDob === correctDob) {
-                // लॉगिन सही होने पर फॉर्म छुपाएं और डाउनलोड बटन दिखाएं
-                document.getElementById("loginSection").classList.add("hidden");
-                document.getElementById("downloadSection").classList.remove("hidden");
-            } else {
-                // गलत एंट्री पर एरर मैसेज
-                errorBox.innerText = "Invalid Roll Number Or DOB";
-            }
+        // एडमिट कार्ड का ओरिजिनल डेटा सेट
+        var correctRoll = "17425517230143";
+        var correctDob = "03-04-2003"; // DD=03, MM=04, YYYY=2003
+
+        // 1. खाली फ़ील्ड्स चेक करना
+        if (userId === '') {
+            alert("Please enter a valid Registration Number.");
+            return false;
         }
-    </script>
+        if (dd === '' || mm === '' || yyyy === '') {
+            alert("Please enter a valid Password.");
+            return false;
+        }
+        if (captchaInput === '') {
+            alert("Please enter the Captcha.");
+            return false;
+        }
+
+        // 2. कैप्चा वैलिडेशन
+        if (captchaInput !== currentCaptcha) {
+            errorPlace.innerText = "Please enter correct text shown in image";
+            generateCaptcha(); // गलत कैप्चा होने पर नया कैप्चा दें
+            return false;
+        }
+
+        // 3. रोल नंबर और जन्मतिथि मैच करना
+        var enteredDob = dd + "-" + mm + "-" + yyyy;
+        if (userId === correctRoll && enteredDob === correctDob) {
+            // लॉगिन सक्सेस - लॉगिन बॉक्स छुपाएं और डाउनलोड बॉक्स दिखाएं
+            document.getElementById("log").classList.add("hidden");
+            document.getElementById("downloadSection").classList.remove("hidden");
+        } else {
+            // गलत क्रेडेंशियल पर ओरिजिनल साइट जैसा एरर दिखाना
+            errorPlace.innerText = "* Incorrect Credentials.";
+            generateCaptcha();
+        }
+    }
+</script>
 
 </body>
 </html>
