@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RRB Chandigarh - E-Call Letter Portal</title>
+    <title>RRB Chandigarh - E-Call Letter</title>
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f4f8; margin: 0; padding: 0; }
         .header { background-color: #003366; color: white; padding: 15px; text-align: center; border-bottom: 4px solid #ffcc00; }
@@ -42,10 +42,10 @@
             <h2>कैंडिडेट लॉगिन (Login)</h2>
             
             <label for="rollNo">अनुक्रमांक (Roll Number):</label>
-            <input type="text" id="rollNo" placeholder="जैसे: 17425517230143" autocomplete="off">
+            <input type="text" id="rollNo" placeholder="rollNo" autocomplete="off">
             
             <label for="dob">जन्मतिथि (Password - DD-MM-YYYY):</label>
-            <input type="text" id="dob" placeholder="जैसे: 03-04-2003" autocomplete="off">
+            <input type="text" id="dob" placeholder="DD-MM-YYYY" autocomplete="off">
             
             <button onclick="validateLogin()">लॉगिन करें</button>
             <p id="errorMessage" class="error"></p>
@@ -54,7 +54,7 @@
         <!-- एडमिट कार्ड डाउनलोड सेक्शन -->
         <div id="downloadSection" class="card hidden">
             <div class="welcome-box">
-                <h2 style="color: #28a745;">लॉगिन सफल (Login Successful)</h2>
+                <h2 style="color: #28a745;">(Login Successful)</h2>
                 <p>आपकी परीक्षा का विवरण नीचे दिया गया है:</p>
                 
                 <table class="info-table">
@@ -78,7 +78,7 @@
 
                 <!-- यहाँ से असली PDF डाउनलोड होगी -->
                 <a href="admit_card.pdf" download="RRB_Admit_Card_Sourabh.pdf" style="text-decoration: none;">
-                    <button class="btn-download">📥 डाउनलोड ई-बुलावा पत्र (Admit Card)</button>
+                    <button class="btn-download">Download E-Call Letter</button>
                 </a>
             </div>
         </div>
@@ -104,7 +104,7 @@
                 document.getElementById("downloadSection").classList.remove("hidden");
             } else {
                 // गलत एंट्री पर एरर मैसेज
-                errorBox.innerText = "गलत अनुक्रमांक (Roll Number) या जन्मतिथि डाली गई है!";
+                errorBox.innerText = "Invalid Roll Number Or DOB";
             }
         }
     </script>
