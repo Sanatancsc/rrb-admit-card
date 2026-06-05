@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Exam Details & Download</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        body { background-color: rgb(93, 155, 251); font-family: Arial, sans-serif; }
+        .Download-container { max-width: 550px; margin: 40px auto; background: #fff; padding: 0px; border-radius: 4px; box-shadow: 0px 4px 10px rgba(0,0,0,0.2); overflow: hidden; }
+        .success-card { padding: 25px; text-align: center; }
+        .success-card h2 { font-size: 18px; color: #28a745; font-weight: bold; border-bottom: 2px solid #28a745; padding-bottom: 10px; margin-bottom: 20px; }
+        .info-table { width: 100%; margin: 20px 0; font-size: 14px; text-align: left; border-collapse: collapse; }
+        .info-table td { padding: 10px; border-bottom: 1px solid #eee; }
+        .info-table td.lbl { font-weight: bold; color: #555; width: 45%; }
+        .btn-download { background-color: #28a745; color: white; padding: 12px 25px; border: none; border-radius: 4px; font-size: 15px; font-weight: bold; cursor: pointer; display: inline-block; margin-top: 15px; text-decoration: none; }
+        .btn-download:hover { background-color: #218838; color: white; text-decoration: none; }
+        .hinttext { text-align: center; color: #777; font-size: 11px; margin-top: 25px; }
+    </style>
+</head>
+<body>
+
+<section class="wrpdashboard">
+    <div class="container-fluid">
+        <div class="Download-container">
+            <div class="success-card">
+                <h2>परीक्षा विवरण / Exam Details</h2>
+                <p style="color: #666; margin-bottom: 20px;">आपका लॉगिन सफल रहा। कृपया अपना एडमिट कार्ड नीचे से डाउनलोड करें:</p>
+                
+                <table class="info-table">
+                    <tr>
+                        <td class="lbl">उम्मीदवार का नाम (Candidate Name):</td>
+                        <td><strong>SOURABH</strong></td>
+                    </tr>
+                    <tr>
+                        <td class="lbl">अनुक्रमांक (Roll Number):</td>
+                        <td>17425517230143</td>
+                    </tr>
+                    <tr>
+                        <td class="lbl">परीक्षा दिनांक (Exam Date):</td>
+                        <td>06/JUN/2026</td>
+                    </tr>
+                    <tr>
+                        <td class="lbl">रिपोर्टिंग समय (Reporting Time):</td>
+                        <td>11:30 AM (Shift 2)</td>
+                    </tr>
+                    <tr>
+                        <td class="lbl">परीक्षा केंद्र (Exam Centre):</td>
+                        <td>Indraprastha Public School, New Delhi</td>
+                    </tr>
+                </table>
+
+                <a href="admit_card.pdf" download="RRB_Admit_Card_Sourabh.pdf" class="btn-download">
+                    📥 डाउनलोड एडमिट कार्ड (E-Call Letter)
+                </a>
+                
+                <div class="hinttext">Version 15.02.01</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
